@@ -1,1 +1,1 @@
-# study-notedy
+# study-note
