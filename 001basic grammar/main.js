@@ -25,7 +25,6 @@
 // var c = 2 > 1
 // var d = 2 >= 3
 // console.log(a, b, c, d)
-
 //     （1）&& 是与 运算，只有所有都为true, 运算结果才是true
 // var a = 1 > 2 && 1 < 2
 // var b = 1 < 2 && 2 > 1
@@ -105,6 +104,8 @@
 // var b = 2345
 // d = 456
 // console.log(a, b)
+
+
 
 // 10. strict严格模式  启用strict模式的方法是在JavaScript代码的第一行写上：'use strict';
 // 'use strict'

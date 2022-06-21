@@ -5,4 +5,19 @@
 // }
 // //console.log(a)
 // console.log(b)
+    //在for里用var和let的区别就很大了
+    /*用var*/
+    var a=[]
+    for(let i=0;i<10;i++){
+        a[i]=function(){
+            console.log(i)
+        }
+    }; console.log(a[6]()) //10
+    /*用var*/
+    var b=[]
+    for(var j=0;j<10;j++){
+        b[j]=function(){
+            console.log(j)
+        }
+    };console.log(b[6]())  //6
 
