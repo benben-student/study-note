@@ -70,30 +70,51 @@
 
 
 //5.用class重新定义Cat，并从已有的Animal继承并新增一个方法say()返回字符串'Hello, xxx!'：
-class Animal {
-    constructor(name) {
-        this.name = name;
-    }
-}
-class Cat extends Animal {
-    constructor(name) {
-        super(name);
-    }
-    say() {
-        return ('Hello, ' + this.name + '!');
-    }
-}
-// 测试:
-var kitty = new Cat('Kitty');
-var doraemon = new Cat('哆啦A梦');
-if ((new Cat('x') instanceof Animal)
-    && kitty
-    && kitty.name === 'Kitty'
-    && kitty.say
-    && typeof kitty.say === 'function'
-    && kitty.say() === 'Hello, Kitty!'
-    && kitty.say === doraemon.say) {
-    console.log('测试通过!');
-} else {
-    console.log('测试失败!');
-}
+// class Animal {
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+// class Cat extends Animal {
+//     constructor(name) {
+//         super(name);
+//     }
+//     say() {
+//         return ('Hello, ' + this.name + '!');
+//     }
+// }
+// // 测试:
+// var kitty = new Cat('Kitty');
+// var doraemon = new Cat('哆啦A梦');
+// if ((new Cat('x') instanceof Animal)
+//     && kitty
+//     && kitty.name === 'Kitty'
+//     && kitty.say
+//     && typeof kitty.say === 'function'
+//     && kitty.say() === 'Hello, Kitty!'
+//     && kitty.say === doraemon.say) {
+//     console.log('测试通过!');
+// } else {
+//     console.log('测试失败!');
+// }
+
+
+//Date   对象用来表示日期和时间
+var now = new Date();
+console.log(now);
+//获取年份
+var a=now.getFullYear(); 
+//获取月份
+var c=now.getMonth()+1; //要加1，因为js设计是0~11为1~12月
+//获取当月多少日
+var aa=now.getDate(); 
+//获取星期几
+var cc=now.getDay(); 
+//获取小时 24小时制
+var aaa=now.getHours(); 
+//获取分
+var ccc=now.getMinutes();
+//获取秒
+var e=now.getSeconds();
+console.log(a,c,aa,cc,aaa,ccc,e)
+

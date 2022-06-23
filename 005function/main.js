@@ -1,3 +1,4 @@
+'use strict';
 // 'use strict'
 // 1.定义函数
 // // （1）function abs(x){
@@ -257,25 +258,140 @@
 // var b=xw.say.apply(xh);   console.log(b)
 // //对于bind **只能** 这样：
 // var c=xw.say.bind(xh)();   console.log(c)
-//(2)apply和call的
-var xw = {
-    name: '小王',
-    gender: '男',
-    age: 24,
-    say: function (school, grade) {
-        return this.name + "," + this.gender + ",今年" + this.age + ",在" + school + "上" + grade
+// //(2)apply和call的
+// var xw = {
+//     name: '小王',
+//     gender: '男',
+//     age: 24,
+//     say: function (school, grade) {
+//         return this.name + "," + this.gender + ",今年" + this.age + ",在" + school + "上" + grade
+//     }
+// }
+// var xh = {
+//     name: '小红',
+//     gender: '女',
+//     age: 18
+// }
+// //对于call
+// var a=xw.say.call(xh,'一高','高一');   console.log(a)
+// //对于apply
+// var b=xw.say.apply(xh,['一高','高一']);  console.log(b)
+// //他们的第二个参数的元素都是与say方法中参数一一对应的，而apply的第二个参数是一个数组
+// //若用 bind 这样做可以这样
+// var c=xw.say.bind(xh)('一高','高一');   console.log(c)
+// //-----------------------------------------
+
+
+//12.map
+//(1)要把pow函数作用在arr数组上可以用map实现
+// function pow(x) {
+//     return x * x;
+// }
+// var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// var results = arr.map(pow);
+// console.log(results)
+//(2)把数组所有数字转化为字符串
+// var arr=[1,2,3,4,5,6,7,8,9]
+// var a=arr.map(String);   console.log(a)
+
+
+//13.reduce  把一个函数作用在这个数组的每一项上，这个函数必须接收两个参数，reduce()把结果继续和序列的下一个元素做 **累积计算**
+//对一个数组求和
+// var arr = [1, 3, 5, 7, 9];
+// var a=arr.reduce(function (x, y) {
+//     return x + y;
+// });   console.log(a)
+
+//14.filter  把传入的函数依次作用于每个元素，然后根据返回值是true还是false决定保留还是丢弃该元素
+//(1)删掉偶数，只保留奇数
+// var arr = [1, 2, 4, 5, 6, 9, 10, 15];
+// var r = arr.filter(function (x) {
+//     return x % 2 !== 0;
+// });
+// console.log(r);
+// //(2)把一个数组中的空字符串删掉
+// var arr = ['A', '', 'B', null, undefined, 'C', '  '];
+// var r = arr.filter(function (s) {
+//     return s && s.trim();
+// });
+// console.log(r);
+
+
+//15.every  判断数组的所有元素是否满足测试条件
+// var arr = ['123', '456', '1'];
+// console.log(arr.every(function (s) {
+//     return s.length > 0;
+// })); 
+
+//16.find  查找符合条件的第一个元素如果找到了回这个元素否则返回undefined
+// var arr = ['', '123', '456', '1'];
+// var arr1=['','1','123']
+// console.log(arr.find(function (s) {
+//     return s.length > 0;
+// })); 
+// console.log(arr1.find(function (s) {
+//     return s.length > 0;
+// // })); 
+
+// //17.findIndex  查找符合条件的第一个元素返回这个元素的索引，如果没有找到返回-1
+// var arr = ['','2','1'];
+// var arr1=['','','1']
+// var arr2=['','','']
+// console.log(arr.findIndex(function (s) {
+//     return s.length > 0;
+// })); 
+// console.log(arr1.findIndex(function (s) {
+//     return s.length > 0;
+// })); 
+// console.log(arr2.findIndex(function (s) {
+//     return s.length > 0;
+// })); 
+
+
+// //18.forEach   把每个元素依次作用于传入的函数但不会返回新的数组,常用于遍历数组
+// var arr = ['Apple', 'pear', 'orange'];
+// arr.forEach(console.log);
+
+
+//箭头函数
+//(1)基本表示
+//普通写法           function (x) {
+//                      return x * x;
+//                   }
+//                  function x(x){
+//                      return x*x
+//                   }
+
+//箭头函数写法         x => x * x 
+//                    var x=x=>x*x  //调用的话 x();
+//(2)如果参数不是一个，就需要用括号()括起来
+// var fn=(x, y) => x * x + y * y
+// console.log(fn(1,2))
+//(3)如果要返回一个对象,对象要加{}
+// x => ({ foo: x })
+
+
+//this指向问题  箭头函数完全修复了this的指向，不再需要 var that = this 写法
+//原写法
+// var obj = {
+//     birth: 2002,
+//     getAge: function () {
+//         var b = this.birth; // 1990
+//         var fn = function () {
+//             return new Date().getFullYear() - this.birth; // this指向window或undefined
+//         };
+//         return fn();
+//     }
+// };
+// console.log(obj.getAge())  //会报错
+
+//箭头函数写法
+var obj = {
+    birth: 2002,
+    getAge: function () {
+        var b = this.birth; // 1990
+        var fn = () => new Date().getFullYear() - this.birth; //修改后this指向obj对象
+        return fn();
     }
-}
-var xh = {
-    name: '小红',
-    gender: '女',
-    age: 18
-}
-//对于call
-var a=xw.say.call(xh,'一高','高一');   console.log(a)
-//对于apply
-var b=xw.say.apply(xh,['一高','高一']);  console.log(b)
-//他们的第二个参数的元素都是与say方法中参数一一对应的，而apply的第二个参数是一个数组
-//若用 bind 这样做可以这样
-var c=xw.say.bind(xh)('一高','高一');   console.log(c)
-//-----------------------------------------
+};
+console.log(obj.getAge(2022))
