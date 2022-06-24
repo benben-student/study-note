@@ -48,3 +48,53 @@
 // var b=dd.hasOwnProperty('toString')
 // console.log(a,b)
 
+
+//对象的解构赋值
+// let { foo, bar } = { foo: 'aaa', bar: 'bbb' };
+// console.log(foo,bar)
+// //对象的属性没有次序，变量必须与属性同名，才能取到正确的值。
+// let { bar, foo } = { foo: 'aaa', bar: 'bbb' };
+// console.log(foo,bar)
+
+// //如果解构失败，变量的值等于undefined。
+// let { baz } = { foo: 'aaa', bar: 'bbb' };
+// console.log(baz)
+
+
+//**注意**，foo是匹配的模式，baz才是变量。真正被赋值的是变量baz，而不是模式foo。
+// let { foo: baz } = { foo: 'aaa', bar: 'bbb' };
+// console.log(baz,foo)
+
+
+// /解构也可以用于嵌套结构的对象
+// let obj = {
+//     p: [
+//         'Hello',
+//         { y: 'World' }
+//     ]
+// };
+
+
+// let { p: [x, { y }] } = obj;
+// console.log(x, y)//这时p是模式，不是变量，因此不会被赋值
+// //如果p也要作为变量赋值，可以写成下面这样
+// //(1)
+// let obj = {
+//     p: [
+//         'Hello',
+//         { y: 'World' }
+//     ]
+// };
+// let { p, p: [x, { y }] } = obj;
+// console.log(x, y, p)
+// //(2)
+// const node = {
+//     loc: {
+//         start: {
+//             line: 1,
+//             column: 5
+//         }
+//     }
+// };
+// let { loc, loc: { start }, loc: { start: { line } } } = node;
+// console.log(line, loc, start)
