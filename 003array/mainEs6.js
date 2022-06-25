@@ -10,26 +10,20 @@
 // console.log(sum(...number))
 
 
-//(2)在时间 new Date
-// var dates = [2022, 6, 20]
-// var d = new Date(...dates)
-// console.log(d)
-
-
-// //(3)数组拼接
+// //(2)数组拼接
 // var arr1=[1,2,3]
 // var arr2=[4,5,6]
 // var arr3=[...arr1,...arr2]
 // console.log(arr3)
 
 
-//(4)数组拷贝
+//(3)数组拷贝
 // var arr1 = [1, 2, 3, 4, 5]
 // var arr2 = [...arr1]
 // console.log(arr2)
 
 
-// //(5)在对象里
+// //(4)在对象里
 // var obj1 = {
 //     foo: '1',
 //     bar: '2'
@@ -42,14 +36,14 @@
 // var b = { ...obj1, ...obj2 }; console.log(b)//合并obj1和obj2
   
 
-//数组的 解构赋值
+//(5)数组的 解构赋值
 // let [a, b, c] = [1, 2, 3];
 // //等号两边的模式相同，左边的变量就会被赋予对应的值
 // let [foo, [[bar], baz]] = [1, [[2], 3]];
 // console.log(foo,barbaz)
 
 // let [ , , third] = ["foo", "bar", "baz"];
-// third 
+// console.log(third) 
 
 // let [x, , y] = [1, 2, 3];console.log(x,y)
 
