@@ -315,6 +315,10 @@
 //     return s && s.trim();
 // });
 // console.log(r);
+//(3).trim方法  去除字符串的头尾空格
+// var str='   123   '
+// var b=str.trim()
+// console.log(b)
 
 
 //15.every  判断数组的所有元素是否满足测试条件
@@ -371,7 +375,7 @@
 // x => ({ foo: x })
 
 
-//this指向问题  箭头函数完全修复了this的指向，不再需要 var that = this 写法
+//19. this指向问题  箭头函数完全修复了this的指向，不再需要 var that = this 写法
 //原写法
 // var obj = {
 //     birth: 2002,
@@ -385,13 +389,80 @@
 // };
 // console.log(obj.getAge())  //会报错
 
-//箭头函数写法
-var obj = {
-    birth: 2002,
-    getAge: function () {
-        var b = this.birth; // 1990
-        var fn = () => new Date().getFullYear() - this.birth; //修改后this指向obj对象
-        return fn();
+//20 箭头函数写法
+// var obj = {
+//     birth: 2002,
+//     getAge: function () {
+//         var b = this.birth; // 1990
+//         var fn = () => new Date().getFullYear() - this.birth; //修改后this指向obj对象
+//         return fn();
+//     }
+// };
+// console.log(obj.getAge(2022))
+
+
+//21 匿名函数
+//(1)什么是匿名函数,
+//单独只写一个匿名函数会报错,需要给 匿名函数包裹一个括号，使之成为表达式
+//被小括号包裹的内容会被js识别为一个函数表达式
+// (function(){
+//     console.log('123')
+// })
+//(2)如何调用  后面加括号即可
+// (function(){
+//     console.log('123')
+// })();
+
+
+//22闭包
+//语法：函数套函数，子函数调用父函数变量，子函数被外界引用
+//好处：缓存数据
+//缺点：内存泄漏（占用内存）
+//(1)
+// function person() {
+//     var arr = 10
+//     function person1() {
+//         return arr
+//     }
+//     return person1
+// }
+// var a = person()
+// console.log(a())
+// //优化
+// function person2() {
+//     var arr1 = 20
+//     return function () {
+//         return arr1
+//     }
+// }
+// var b = person2()
+// console.log(b())
+//(2)也可以用数组的形式
+// function person(){
+//     var a=1
+//     var b=2
+//     return function(){
+//         return [a,b]
+//     }
+// }
+// var a=person()
+// var b=a()[0]
+// var c=a()[1]
+// console.log(a(),b,c)
+//另一种改写方式
+function person(){
+    var a=1
+    var b=2
+    return[
+        function(){
+            return a
+        },
+    function(){
+        return b
     }
-};
-console.log(obj.getAge(2022))
+    ]
+}
+var a=person()
+var b=a[0]()
+var c=a[1]()
+console.log(b,c)
