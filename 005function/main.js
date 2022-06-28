@@ -450,19 +450,73 @@
 // var c=a()[1]
 // console.log(a(),b,c)
 //另一种改写方式
-function person(){
-    var a=1
-    var b=2
-    return[
-        function(){
+// function person(){
+//     var a=1
+//     var b=2
+//     return[
+//         function(){
+//             return a
+//         },
+//     function(){
+//         return b
+//     }
+//     ]
+// }
+// var a=person()
+// var b=a[0]()
+// // var c=a[1]()
+// // console.log(b,c)
+// //(3)对象的形式
+// function fun(){
+//     var a=10
+//     var b=20
+//     return {
+//         getA:function(){
+//             return a
+//         },
+//         getB:function(){
+//             return b
+//         }
+//     }
+// }
+// var f=fun()
+// var a=f.getA()
+// var b=f.getB()
+// console.log(a,b)
+//优化 框架里常见的形式
+// function fun() {
+//     var a = 10
+//     var b = 20
+//     function getA() {
+//         return a
+//     }
+//     function getB() {
+//         return b
+//     }
+//     return {
+//         getA: getA,
+//         getB: getB
+//     }
+// }
+// var f = fun()
+// var a = f.getA()
+// var b = f.getB()
+// console.log(a, b)
+//在模块里的，与自调用函数的结合形式
+var moduel=(function fun() {
+        var a = 10
+        var b = 20
+        function getA() {
             return a
-        },
-    function(){
-        return b
-    }
-    ]
-}
-var a=person()
-var b=a[0]()
-var c=a[1]()
-console.log(b,c)
+        }
+        function getB() {
+            return b
+        }
+        return {
+            getA: getA,
+            getB: getB
+        }
+    })();
+var a=moduel.getA()
+var b=moduel.getB()
+console.log(a,b)
