@@ -5,7 +5,7 @@
 // console.log(a,b,c)
 
 //2.Object.assign() 
-//(1)用于对象的合并
+//(1)用于对象的合并8u
 // const target = { a: 1 };
 // const source1 = { b: 2 };
 // const source2 = { c: 3 };
