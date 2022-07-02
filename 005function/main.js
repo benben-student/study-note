@@ -397,126 +397,126 @@
 //         var fn = () => new Date().getFullYear() - this.birth; //修改后this指向obj对象
 //         return fn();
 //     }
-// };
-// console.log(obj.getAge(2022))
+// // };
+// // console.log(obj.getAge(2022))
 
 
-//21 匿名函数
-//(1)什么是匿名函数,
-//单独只写一个匿名函数会报错,需要给 匿名函数包裹一个括号，使之成为表达式
-//被小括号包裹的内容会被js识别为一个函数表达式
-// (function(){
-//     console.log('123')
-// })
-//(2)如何调用  后面加括号即可
-// (function(){
-//     console.log('123')
-// })();
+// //21 匿名函数
+// //(1)什么是匿名函数,
+// //单独只写一个匿名函数会报错,需要给 匿名函数包裹一个括号，使之成为表达式
+// //被小括号包裹的内容会被js识别为一个函数表达式
+// // (function(){
+// //     console.log('123')
+// // })
+// //(2)如何调用  后面加括号即可
+// // (function(){
+// //     console.log('123')
+// // })();
 
 
-//22闭包
-//语法：函数套函数，子函数调用父函数变量，子函数被外界引用
-//好处：缓存数据
-//缺点：内存泄漏（占用内存）
-//(1)
-// function person() {
-//     var arr = 10
-//     function person1() {
-//         return arr
-//     }
-//     return person1
-// }
-// var a = person()
-// console.log(a())
-// //优化
-// function person2() {
-//     var arr1 = 20
-//     return function () {
-//         return arr1
-//     }
-// }
-// var b = person2()
-// console.log(b())
-//(2)也可以用数组的形式
-// function person(){
-//     var a=1
-//     var b=2
-//     return function(){
-//         return [a,b]
-//     }
-// }
-// var a=person()
-// var b=a()[0]
-// var c=a()[1]
-// console.log(a(),b,c)
-//另一种改写方式
-// function person(){
-//     var a=1
-//     var b=2
-//     return[
-//         function(){
+// //22闭包
+// //语法：函数套函数，子函数调用父函数变量，子函数被外界引用
+// //好处：缓存数据
+// //缺点：内存泄漏（占用内存）
+// //(1)
+// // function person() {
+// //     var arr = 10
+// //     function person1() {
+// //         return arr
+// //     }
+// //     return person1
+// // }
+// // var a = person()
+// // console.log(a())
+// // //优化
+// // function person2() {
+// //     var arr1 = 20
+// //     return function () {
+// //         return arr1
+// //     }
+// // }
+// // var b = person2()
+// // console.log(b())
+// //(2)也可以用数组的形式
+// // function person(){
+// //     var a=1
+// //     var b=2
+// //     return function(){
+// //         return [a,b]
+// //     }
+// // }
+// // var a=person()
+// // var b=a()[0]
+// // var c=a()[1]
+// // console.log(a(),b,c)
+// //另一种改写方式
+// // function person(){
+// //     var a=1
+// //     var b=2
+// //     return[
+// //         function(){
+// //             return a
+// //         },
+// //     function(){
+// //         return b
+// //     }
+// //     ]
+// // }
+// // var a=person()
+// // var b=a[0]()
+// // // var c=a[1]()
+// // // console.log(b,c)
+// // //(3)对象的形式
+// // function fun(){
+// //     var a=10
+// //     var b=20
+// //     return {
+// //         getA:function(){
+// //             return a
+// //         },
+// //         getB:function(){
+// //             return b
+// //         }
+// //     }
+// // }
+// // var f=fun()
+// // var a=f.getA()
+// // var b=f.getB()
+// // console.log(a,b)
+// //优化 框架里常见的形式
+// // function fun() {
+// //     var a = 10
+// //     var b = 20
+// //     function getA() {
+// //         return a
+// //     }
+// //     function getB() {
+// //         return b
+// //     }
+// //     return {
+// //         getA: getA,
+// //         getB: getB
+// //     }
+// // }
+// // var f = fun()
+// // var a = f.getA()
+// // var b = f.getB()
+// // console.log(a, b)
+// //在模块里的，与自调用函数的结合形式
+// var moduel=(function fun() {
+//         var a = 10
+//         var b = 20
+//         function getA() {
 //             return a
-//         },
-//     function(){
-//         return b
-//     }
-//     ]
-// }
-// var a=person()
-// var b=a[0]()
-// // var c=a[1]()
-// // console.log(b,c)
-// //(3)对象的形式
-// function fun(){
-//     var a=10
-//     var b=20
-//     return {
-//         getA:function(){
-//             return a
-//         },
-//         getB:function(){
+//         }
+//         function getB() {
 //             return b
 //         }
-//     }
-// }
-// var f=fun()
-// var a=f.getA()
-// var b=f.getB()
+//         return {
+//             getA: getA,
+//             getB: getB
+//         }
+//     })();
+// var a=moduel.getA()
+// var b=moduel.getB()
 // console.log(a,b)
-//优化 框架里常见的形式
-// function fun() {
-//     var a = 10
-//     var b = 20
-//     function getA() {
-//         return a
-//     }
-//     function getB() {
-//         return b
-//     }
-//     return {
-//         getA: getA,
-//         getB: getB
-//     }
-// }
-// var f = fun()
-// var a = f.getA()
-// var b = f.getB()
-// console.log(a, b)
-//在模块里的，与自调用函数的结合形式
-var moduel=(function fun() {
-        var a = 10
-        var b = 20
-        function getA() {
-            return a
-        }
-        function getB() {
-            return b
-        }
-        return {
-            getA: getA,
-            getB: getB
-        }
-    })();
-var a=moduel.getA()
-var b=moduel.getB()
-console.log(a,b)
