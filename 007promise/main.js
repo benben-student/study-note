@@ -105,4 +105,63 @@
 //     })
 
 
-//引出 .then()
+//Promise解决回调地狱
+const ID_BASE_URL = 'https://jsonplaceholder.typicode.com/todos'
+const ROBOT_IMG_BASE_URL = 'https://robohash.org'
+//获取机器人的id
+function getRobotId(url, callback) {
+    $.get(url, function (data) {
+        const id = data.id
+        callback(id)
+    })
+}
+
+//创建机器人
+function createRobot(id) {
+    const img = document.createElement('img')
+    img.src = ROBOT_IMG_BASE_URL + `/${id}?size=200*200`
+    document.body.appendChild(img)
+}
+
+//回调地狱
+// const result = getRobotId(ID_BASE_URL + '/1', function (id) {
+//     createRobot(id)
+
+//     getRobotId(ID_BASE_URL + '/2', function (id) {
+//         createRobot(id)
+
+//         getRobotId(ID_BASE_URL + '/3', function (id) {
+//             createRobot(id)
+
+//             getRobotId(ID_BASE_URL + '/4', function (id) {
+//                 createRobot(id)
+
+//                 getRobotId(ID_BASE_URL + '/5', function (id) {
+//                     createRobot(id)
+//                 })
+//             })
+//         })
+//     })
+// })
+
+//获取机器人的id (Promise形式)
+function getRobotIdPromise(url) {
+    const promise = new Promise((resolve, reject) => {
+        $.get(url, function (data) {
+            const id = data.id
+            console.log('id', id)
+        })
+    })
+    return promise
+}
+getRobotIdPromise(ID_BASE_URL + '/1').then(function (id) {
+    createRobot(id)
+
+    return getRobotIdPromise(ID_BASE_URL + '/2')
+}).then(function (id) {
+    createRobot(id)
+
+    return getRobotIdPromise(ID_BASE_URL + '/3')
+}).then(function (id) {
+    createRobot(id)
+})
