@@ -99,22 +99,22 @@
 // }
 
 
-//Date   对象用来表示日期和时间
-var now = new Date();
-console.log(now);
-//获取年份
-var a=now.getFullYear(); 
-//获取月份
-var c=now.getMonth()+1; //要加1，因为js设计是0~11为1~12月
-//获取当月多少日
-var aa=now.getDate(); 
-//获取星期几
-var cc=now.getDay(); 
-//获取小时 24小时制
-var aaa=now.getHours(); 
-//获取分
-var ccc=now.getMinutes();
-//获取秒
-var e=now.getSeconds();
-console.log(a,c,aa,cc,aaa,ccc,e)
+// //Date   对象用来表示日期和时间
+// var now = new Date();
+// console.log(now);
+// //获取年份
+// var a=now.getFullYear(); 
+// //获取月份
+// var c=now.getMonth()+1; //要加1，因为js设计是0~11为1~12月
+// //获取当月多少日
+// var aa=now.getDate(); 
+// //获取星期几
+// var cc=now.getDay(); 
+// //获取小时 24小时制
+// var aaa=now.getHours(); 
+// //获取分
+// var ccc=now.getMinutes();
+// //获取秒
+// var e=now.getSeconds();
+// console.log(a,c,aa,cc,aaa,ccc,e)
 
