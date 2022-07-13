@@ -45,13 +45,13 @@
 //（4）终极结局方法：async/await方法
 
 //成功的回调函数
-function successCallback(result) {
-    console.log('声音文件创建成功：' + result);
-}
-//失败的回调函数
-function failureCallback(error) {
-    console.log('声音文件创建失败：' + error);
-}
+// function successCallback(result) {
+//     console.log('声音文件创建成功：' + result);
+// }
+// //失败的回调函数
+// function failureCallback(error) {
+//     console.log('声音文件创建失败：' + error);
+// }
 //1).使用纯回调函数
 // createAudioFileAsync(audioSetting, successCallback, failureCallback)
 
@@ -126,13 +126,13 @@ reject函数：内部定义失败时调用的函数reason=>{}
 //         }
 //     )
 //产生一个成功值为1的promise对象
-const p1 = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(1)
-    }, 1000);
-})
-const p2 = Promise.resolve(2)
-const p3 = Promise.reject(3)
+// const p1 = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve(1)
+//     }, 1000);
+// })
+// const p2 = Promise.resolve(2)
+// const p3 = Promise.reject(3)
 // p1.then(value => {console.log(value);})
 // p2.then(value => {console.log(value);})
 // p3.catch(reason => {console.log(reason);})
@@ -149,12 +149,188 @@ const p3 = Promise.reject(3)
 //     }
 // )
 //race
-const pRace=Promise.race([p1,p2,p3])
-pRace.then(
-    value=>{
-        console.log('race onResolved',value);
+// const pRace=Promise.race([p1,p2,p3])
+// pRace.then(
+//     value=>{
+//         console.log('race onResolved',value);
+//     },
+//     reason=>{
+//          console.log('race onRejected',reason);
+//     }
+// )
+
+//6.如何改变promise的状态
+//（1）resolve(value)
+//(2)reject(reason)
+//(3)抛出异常：当前是pedding就会变成rejected
+// const   p=new Promise((resolve,reject)=>{
+//     // resolve(1)  //promise变为resolved状态
+//     // reject(2)   //promise变为rejected状态
+//     //throw new Error('出错了')  //抛出异常，promise变为rejected状态，reason为抛出的error
+//     throw 3  //抛出异常，promise变为rejected状态，reason为抛出的3
+// })
+// p.then(
+//     value=>{},
+//     reason=>{
+//         console.log('reason',reason);
+//     }
+// )
+
+
+
+// //7.一个promise指定多个成功/失败回调函数，都会调用吗
+// //当promise改变为对应状态时都会调用
+// p.then(
+//     value=>{},
+//     reason=>{
+//         console.log('reason2',reason);
+//     }
+// )
+// p.then(
+//     value=>{},
+//     reason=>{
+//         console.log('reason3',reason);
+//     }
+// )
+
+
+
+//8.改变promise状态和指定回调函数谁先谁后
+//常规：先指定回调函数，后改变的状态
+// new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve(1)  //后改变的状态(同时指定数据)，异步执行回调函数
+//     }, 1000)
+// }).then(//先指定回调函数，保存当前的回调函数
+//     value => { },
+//     reason => {
+//         console.log('reason', reason);
+//     }
+// )
+
+// //先改状态，后指定回调函数
+// new Promise((resolve, reject) => {
+//     resolve(1)  //先改变的状态(同时指定数据)
+// }).then(//后指定回调函数，异步执行回调函数
+//     value => { console.log('value', value) },
+//     reason => {
+//         console.log('reason', reason);
+//     }
+// )
+
+/*9.promise.then()返回的新promise的结果状态由什么决定？
+(1)简单表达：由then()指定的回调函数执行的结果决定
+(2)详细表达：
+    1)如果抛出异常，新promise变为rejected，reason为抛出的异常
+    2)如果返回的是非promise的任意值，新promise变为resolved，value为返回的值
+    3)如果返回的是另一个新promise，此promise的结果就会成为新promise的结果
+*/
+// new Promise((resolve,reject)=>{
+//     resolve(1)
+//     //reject(2)
+// }).then(
+//     value=>{
+//         console.log('value',value);
+//         // return 2
+//         // return Promise.resolve(3)
+//         // return Promise.reject(4)
+//         throw 5
+//     },
+//     reason=>{
+//         console.log('reason',reason);
+//     }
+// )
+
+
+//10. promise如何*串联*多个操作任务
+//(1)promise的then()返回一个新的promise，可以形成then的链式调用
+//(2)通过then的链式调用串联多个同步/异步任务
+
+
+// new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         console.log('执行任务1(异步)');
+//         resolve(1)
+//     }, 1000);
+// }).then(
+//     value => {
+//         console.log('任务1的结果', value);
+//         console.log('执行任务2(同步)');
+//         return 2
+//     }
+// ).then(
+//     value => {
+//         console.log('任务2的结果', value);
+//         //再有异步任务需要封装在Promise里面，Promise是封装异步操作的
+//         return new Promise((resolve, reject) => {
+//             //启动任务3(异步)
+//             setTimeout(() => {
+//                 console.log('执行任务(异步)');
+//                 resolve(3)
+//             }, 1000);
+//         })
+//     }
+// ).then(
+//     value => {
+//         console.log('任务3的结果', value);
+//     }
+// )
+
+
+//11.promise异常穿透
+//(1)当使用promise的then链式调用时，可以在最后指定失败的回调
+//(2)前面任何操作出了异常，都会传到最后失败的回调函数中处理
+// new Promise((resolve, reject) => {
+//     //resolve(1)
+//     reject(1)
+// }).then(
+//     value => {
+//         console.log('onResolved1()', value);
+//         return 2
+//     },
+//     //默认写为 reason=> {throw reason}
+//     //或者写为  reason=>Promise.reject(reason)
+// ).then(
+//     value => {
+//         console.log('onResolved2()', value);
+//         return 3
+//     },
+//     //默认写为 reason=> {throw reason}
+//     //或者写为  reason=>Promise.reject(reason)
+// ).then(
+//     value => {
+//         console.log('onResolved3()', value);
+//     },
+//     //默认写为 reason=> {throw reason}
+//     //或者写为  reason=>Promise.reject(reason)
+// ).catch(
+//     reason => {
+//         console.log('onRejected1()', reason);
+//     }
+// )
+
+
+//12.中断promise链
+new Promise((resolve, reject) => {
+    //resolve(1)
+    reject(1)
+}).then(
+    value => {
+        console.log('onResolved1()', value);
+        return 2
+    }
+).catch(
+    reason => {
+        console.log('onRejected1()', reason);
+        //throw reason
+        //return Promise.reject(reason)
+        return new Promise(()=>{})//返回一个pedding的promise，中断promise链
+    }
+).then(
+    value => {
+        console.log('onResolved3()', value);
     },
-    reason=>{
-         console.log('race onRejected',reason);
+    reason => {
+        console.log('onReject4()', reason);
     }
 )
