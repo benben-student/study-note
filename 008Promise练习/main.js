@@ -212,17 +212,17 @@ function createRobot(id) {
 
 //try catch 方法
 // //基本的语法:
-//           try{ 
+//           try{
 //              // 可能会导致错误的代码
-//             } catch(error){ 
+//             } catch(error){
 //              // 在错误发生时怎么处理
 //             }finally{
 //              //无论上面结果如何finally都会执行
-//             } 
+//             }
 //正确的形式
 // var array=[1,2]
 // try {
-//    console.log(array.length)   
+//    console.log(array.length)
 // } catch (error) {
 //    console.log('错误信息：'+error.message)
 //    arr=[]
@@ -230,7 +230,7 @@ function createRobot(id) {
  //错误的形式
 //  var array=null
 // try {
-//    console.log(array.length)   
+//    console.log(array.length)
 // } catch (error) {
 //    console.log('错误信息：'+error.message)
 //    arr=[]
@@ -238,7 +238,7 @@ function createRobot(id) {
 // //加finall
 // var array=null
 // try {
-//    console.log(array.length)   
+//    console.log(array.length)
 // } catch (error) {
 //    console.log('错误信息：'+error.message)
 //    arr=[]
@@ -247,7 +247,7 @@ function createRobot(id) {
 //  }
 
 
-// //4.class继承  
+// //4.class继承
 // function Student(name) {
 //     this.name = name;
 // }
@@ -255,7 +255,7 @@ function createRobot(id) {
 //     alert('Hello, ' + this.name + '!');
 // }
 
-// //class可以这样写  原型对象的构造函数不用考虑了直接通过extends来实现 
+// //class可以这样写  原型对象的构造函数不用考虑了直接通过extends来实现
 // class Person extends Student {
 //     constructor(name, grade) {
 //         super(name); // 记得用super调用父类的构造方法!
