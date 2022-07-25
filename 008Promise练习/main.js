@@ -106,23 +106,23 @@
 //     })
 
 
-//Promise解决回调地狱
-const ID_BASE_URL = 'https://jsonplaceholder.typicode.com/todos'
-const ROBOT_IMG_BASE_URL = 'https://robohash.org'
-//获取机器人的id
-function getRobotId(url, callback) {
-    $.get(url, function (data) {
-        const id = data.id
-        callback(id)
-    })
-}
+// //Promise解决回调地狱
+// const ID_BASE_URL = 'https://jsonplaceholder.typicode.com/todos'
+// const ROBOT_IMG_BASE_URL = 'https://robohash.org'
+// //获取机器人的id
+// function getRobotId(url, callback) {
+//     $.get(url, function (data) {
+//         const id = data.id
+//         callback(id)
+//     })
+// }
 
-//创建机器人
-function createRobot(id) {
-    const img = document.createElement('img')
-    img.src = ROBOT_IMG_BASE_URL + `/${id}?size=200*200`
-    document.body.appendChild(img)
-}
+// //创建机器人
+// function createRobot(id) {
+//     const img = document.createElement('img')
+//     img.src = ROBOT_IMG_BASE_URL + `/${id}?size=200*200`
+//     document.body.appendChild(img)
+// }
 
 //回调地狱
 // const result = getRobotId(ID_BASE_URL + '/1', function (id) {
@@ -227,7 +227,7 @@ function createRobot(id) {
 //    console.log('错误信息：'+error.message)
 //    arr=[]
 //  }
- //错误的形式
+//错误的形式
 //  var array=null
 // try {
 //    console.log(array.length)
@@ -299,4 +299,44 @@ function createRobot(id) {
 // } else {
 //     console.log('测试失败!');
 // }
+
+
+
+// function text(){
+//   console.log('在此打印');
+// }
+// console.log(text());   //undefined
+// //相当于 
+// function text(){
+//     console.log('在此打印');
+//     return undefined
+// }
+
+//可以text().a调用
+// function text(){
+//     return {a:1}
+// }
+//console.log(text().a);//text返回一个函数
+
+//返回函数的
+// function text(){
+//     return function text1(){
+
+//     }
+//     return text1
+// }
+// console.log(text());
+//匿名函数写法
+// function text() {
+//     return () => {
+//         console.log('111');
+//         return 1
+//     }
+// }
+// console.log(text()());//text()() test()是在执行test函数，结果是test函数的返回值
+
+
+
+
+
 

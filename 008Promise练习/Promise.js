@@ -81,7 +81,7 @@ await必须写在async函数中，但async函数中可以没有await
 //     //返回一个新的promise对象
 //     Promise.prototype.then = function (onResolved, onRejected) {
 //                                                       // onResolved = typeof onResolved === 'function' ? onResolved : value =>value//向后传递成功的value
-                                                      
+
 //                                                       // //指定默认的失败的回调
 //                                                       // onRejected = typeof onRejected === 'function' ? onRejected : reason => { throw reason }//向后传递失败的reason
 
@@ -139,8 +139,8 @@ await必须写在async函数中，但async函数中可以没有await
 //                                                       //             });
 //                                                       //         });
 //                                                       //     }
-      
-      
+
+
 //                                                       // })
 //     }
 
@@ -179,3 +179,82 @@ await必须写在async函数中，但async函数中可以没有await
 //     //向外暴露Promise函数
 //     window.Promise = Promise
 // })(window)
+
+
+
+
+
+// function mock1() {
+//     return new Promise((resolve, reject) => {
+//       const aa = { value: 3, time: 1000 }
+//       const tap = (p) => {
+//         const data = Object.assign(aa, p)
+//         const { value, time } = data || {}
+//         setTimeout(() => {//小于0.5失败，大于0.5成功
+//           if (Math.random() > 0.5) {
+//             resolve(value)
+//           } else if (Math.random() < 0.5) {
+//             reject(value)
+//           }
+//         }, time);
+//       }
+//       tap({ value: 10, time: 2000 })//指定返回的时间，数值
+//     })
+//   }
+//   const result = mock1()
+//   result.then(
+//     value => {
+//       console.log('success', value);//成功的
+//     },
+//     reason => {
+//       console.log('fail', reason);//失败的
+//     }
+//   )
+//  mock({ responseData: 1, delay: 3000, responseType: 'success' }).then((res) => {
+//   console.log(res);
+// })
+
+// mock({ responseData: 1, delay: 3000, responseType: 'fail' }).then((res) => {
+//   console.log(res);
+// }).catch((error) => {
+//   console.log(error);
+// })
+
+// try {
+//   const res = await mock({ responseData: 1, delay: 3000, responseType: 'random' })
+//   console.log(res);
+// } catch (error) {
+//   console.log(error);
+// }
+
+
+// function mock1() {
+//   const aa = { value: '---3', time: 1000, result: 'faill' }
+//   return new Promise((resolve, reject) => {
+//     const tap = (p) => {
+//       const data = Object.assign(aa, p)
+//       const { value, time, result } = data || {}
+//       setTimeout(() => {
+//         if (Math.random() > 0.5) {
+//           resolve('success' + value)
+//         } else if (Math.random() < 0.5) {
+//           reject('fail' + value)
+//         } else {
+//           console.log('随机' + result)
+//         }
+//       }, time);
+//     }
+//     tap({ value: '---4000', time: 100, result: 'succccc' })//指定返回的类型
+//   })
+// }
+
+// async function mock3() {
+//   try {
+//     const value = await mock1()
+//     console.log('成功', value);
+//   } catch (error) {
+//     console.log('失败', error);
+//   }
+// }
+// mock3()
+
