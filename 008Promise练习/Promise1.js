@@ -7,7 +7,7 @@ const mock = (params) => {
 
   const finalParams = Object.assign({}, defaultParam, params);
   const { delay, responseType, responseData } = finalParams;
-  console.log('------>', delay, responseType, responseData);
+  // console.log('------>', delay, responseType, responseData);
 
   return new Promise((resolve, reject) => {
     // responseType ---> success
@@ -37,6 +37,10 @@ const mock = (params) => {
     //   }
     // }
 
+
+
+
+
     setTimeout(() => {
       if (responseType === 'success') {
         resolve(responseData);
@@ -62,28 +66,28 @@ const mock = (params) => {
  */
 
 // case 1
-mock()
-  .then((res) => {
-    // 打印这一句，返回的值是：{ data: [1,2,3] }
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// mock()
+//   .then((res) => {
+//     // 打印这一句，返回的值是：{ data: [1,2,3] }
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
-// case 2
-mock({ delay: 3000, responseType: 'fail' })
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    // 打印这一句
-    console.log(err.message);
-  });
+// // // case 2
+// mock({ delay: 1000, responseType: 'fail' })
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     // 打印这一句
+//     console.log(err.message);
+//   });
 
 const run = async () => {
   try {
-    const res = await mock({ responseType: 'random', delay: 4000 });
+    const res = await mock({ delay: 4000, responseType: 'random', responseData: 1000 });
     console.log(res);
   } catch (error) {
     console.log(error.message);
