@@ -1,0 +1,14 @@
+li{
+    list-style-type: none;
+}
+.span{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border: 1px black solid;
+    margin-right: 50px;
+    background-color: aqua;
+}
+.span:hover{
+    background-color: rgb(48, 28, 142);
+}
