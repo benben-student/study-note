@@ -16,10 +16,10 @@
 
 
 //需要写的，不能自动判断类型的
-function getTotal(one: number, two: number){
-    return one + two
-}
-const total = getTotal(1, 2)
+// function getTotal(one: number, two: number){
+//     return one + two
+// }
+// const total = getTotal(1, 2)
 
 
 //如果 ts 能自动分析变量类型，我们就什么也不需要做
