@@ -17,6 +17,7 @@ const person: string = "js"
 //编译后的文件的存放路径
 // "outDir": "./build",
 
+
 //生成编译前后的文件的路径和信息
 // "sourceMap": true,  
 
