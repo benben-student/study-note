@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //1.完整的赋值语句
+    var x = 1;
+    console.log(x)
+    //字符串，也可视为一个完整的语句
+    var y = "Hello world"
+    console.log(y)
+    //判断语句
+    if (2 > 1) {
+        console.log(1)
+    }
+    //2.数据类型
+    /*{
+        (1)String字符串
+        (2)Number数值类型
+        (3)Boolean布尔类型 true和false
+        (4)Null类型
+        (5)Undefined
+        (6)Object类型
+    }*/
+    //3.数组
+    [1, 2, 3.14, 'hello', null, true]
+    //数组里可以包括任意数据类型
+
+    //创建数组的方法
+    var a = new Array(1, 2, 3)
+    console.log(a);
+
+    //数组的元素用索引的方式来访问，索引的起始值为0
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8]
+    var b = arr[1]
+    var c = arr[3]
+    var d = arr[4]
+    console.log(b, c, d);
+    //对象
+    //是由一组 ‘键’ - ‘值’ 组成的无序组合
+    var person = {
+        name: "Bob",
+        age: 20,
+        tags: ["js", "web", "moblie"],
+        city: "BEIJING",
+
+    }
+    //对象获取属性的方式  “对象变量.属性名”  的方式
+    console.log(person.name)
+    console.log(person.age)
+    console.log(person.city)
+
+    //strict模式
+    "use strict";
+    i = 10
+    console.log(i);
+</script>
+
+</html>
