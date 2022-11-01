@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //对象 由若干键值对组成
+    //描述人
+    var xl={
+        age:18,
+        name:"明",
+        school:"郑大",
+        "weight-height":"70kg,180cm"
+    }
+    console.log(xl);
+
+    //获取对象内部属性 属性名若包含特殊字符需用 "" 包起来
+    var age=xl.age
+    var name=xl.name
+    var school=xl.school
+    var body=xl["weight-height"]  //直接对象名加[]
+    console.log(age,name,school,body);
+</script>
+</html>

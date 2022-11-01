@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //数组可以包含任意数组类型
+    
+    //获取数组的长度
+    // var arr=[1,"a",null,true,3.24]
+    // var a=arr.length
+    // console.log(a);
+
+    //可以改变数组的长度，不过...
+    // var arr=[1,2,3]
+    // console.log(arr.length)
+    // arr.length=5
+    // console.log(arr); //多出的长度会变为undefined
+    // arr.length=2
+    // console.log(arr); //长度小于数组长度的话会删除
+
+    //数组可以通过索引把对应的元素修改为新的值，相当于直接赋值
+    // var arr=[1,2,3]
+    // arr[2]="1"
+    // console.log(arr);
+
+    //数组通过索引赋值超过了数组长度范围会引起数组大小的变化
+    // var arr=[1,2,3]
+    // arr[6]="1"
+    // console.log(arr);
+
+    //indexOf也可用于数组
+    // var arr=[1,2,3,4,5]
+    // console.log(arr.indexOf(1));
+    // console.log(arr.indexOf(2));
+    // console.log(arr.indexOf(5));
+    // console.log(arr.indexOf("1"));
+
+    //slice() 
+    //(1)只有一个参数
+    // var arr=[1,2,3,4,5,6,7,8]
+    // var a=arr.slice(3)
+    // console.log(a); //从索引3开始一直到结束
+    //(2)有两个参数
+    // var arr=[2,3,4,5,6,7,8]
+    // var a=arr.slice(2,4)
+    // console.log(a);
+    //注意：两个参数时，截取的数组里只包含索引不包含结束索引
+    //(3)如果不传递参数 slice会复制下来全部的数组里的元素
+    // var arr=[1,2,3,4,5,6,7,8,9]
+    // var a=arr.slice()
+    // console.log(a);
+
+    //push() 会向数组的末尾添加元素
+    // var arr=[1,2,3]
+    // arr.push("1",2,"3")
+    // console.log(arr);
+
+    //pop() 会把数组最后一个元素删掉
+    // var arr=[1,2,3,4]
+    // arr.pop()
+    // console.log(arr);
+
+    //unshift() 可以向数组的头部添加若干元素
+    // var arr=[1,2,3]
+    // arr.unshift(1,2,"3","4")
+    // console.log(arr);
+
+    //shift() 会把数组的第一个元素删掉
+    // var arr=[1,2,3,4]
+    // arr.shift()
+    // console.log(arr);
+    
+    //sort() 会把数组里的元素按默认顺序进行排序
+    // var arr=["c","a","b",4,2,1,3]
+    // arr.sort()
+    // console.log(arr);
+
+    //reverse() 会把数组进行反转
+    // var arr=[1,2,3,4,5]
+    // arr.reverse()
+    // console.log(arr);
+
+    //splice()
+    //(1)两个参数，执行删除功能
+    //第一个参数是索引，表示从下标为索引的开始删除,包含索引本身
+    //第二个参数是所删除的个数
+    // var arr=[1,2,3,4,5,6]
+    // var a=arr.splice(2,2)
+    // console.log(arr);
+    // console.log(a); //为被删除的元素
+    //(2)三个参数时，第三个参数为数组里增加的元素
+    // var arr=[1,2,3,4,5,6]
+    // var a=arr.splice(3,2,"2")
+    // console.log(arr);
+
+    //concat() 可以把数组连接起来
+    // var a=[1,2,3]
+    // var b=[4,5,6]
+    // var arr=a.concat(b)
+    // console.log(arr);
+
+    //join() 可以把数组里的每个元素用指定的字符连接起来
+    var arr=[1,2,3,4,5]
+    var a=arr.join("*")
+    console.log(a);
+</script>
+</html>

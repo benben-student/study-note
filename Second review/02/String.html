@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //字符串 就是用''或""括起来的字符表示
+    //假如 ' 也是一个字符串，可以用""括起来，
+    //例如：
+    // var a="I'm ok"
+    // console.log(a);
+
+    //假如字符串里既包含'又包含",则可以用转义字符 \来标识
+    //例如：
+    // var b="i\'m'ok\'!"
+    // console.log(b);
+
+    //把多个字符串连接起来可以用 + 连接
+    // var name="小明"
+    // var age=20
+    // var message="你好，"+name+",你今年"+age+"岁了！"
+    // console.log(message)
+
+    //模板字符串 字符串变多的话用+很麻烦
+    //用法 ` 内容xx ${字符串名} 内容xx `
+    // var name="小明"
+    // var age=20
+    // var message=`你好，${name},你今年${age}岁了!`
+    // console.log(message);
+
+    //获取字符串的长度
+    // var s="hello world"
+    // var a=s.length
+    // console.log(a);
+
+    //获取字符串某个指定位置的字符
+    // var ss="hello world"
+    // var a=ss[0]
+    // var b=ss[1]
+    // var d=ss[2]
+    // var c=ss[100] //超出索引范围不会报错，会提示undefined
+    // console.log(a,b,d,c);
+
+    //字符串是不可变的
+    // var a="world"
+    // a[1]="a"
+    // console.log(a);
+
+    //把字符串全变为大写 toUpperCase()
+    // var s="hello"
+    // var a=s.toUpperCase()
+    // console.log(a);
+
+    //把一个字符串全变为小写 toLowerCase()
+    // var s="HELLO WORLD"
+    // var a=s.toLowerCase()
+    // console.log(a);
+
+    //indexOf() 会搜索指定首个字符串出现的位置
+    // var s="hello world"
+    // console.log(s.indexOf("hello"));
+    // console.log(s.indexOf("Hello")); //若没有则会返回-1
+
+    //substring() 返回指定索引区间的子串
+    // var s="hello world"
+    // console.log(s.substring(0,1));
+    // console.log(s.substring(3,4));
+</script>
+</html>
