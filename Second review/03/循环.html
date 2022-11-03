@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //for循环
+    // var arr=['Apple','Google','Microsoft']
+    // for(i=0;i<arr.length;i++){
+    //     x=arr[i]
+    //     console.log(x);
+    // }
+
+    //for in 循环 可以把一个对象的属性全部一次循环出来
+    // var o={
+    //     name:"a",
+    //     age:18,
+    //     city:"zz"
+    // }
+    // for(var key in o){
+    //     console.log(key);
+    // }
+    
+    //hasOwnProperty() 过滤对象继承的属性
+        // var a={
+        //     name:"jj",
+        //     age:20,
+        //     city:"zd"
+        // }
+        // a.name="bb"
+        // for(var key in a){
+        //     if(a.hasOwnProperty(key)){
+        //         console.log(key);
+        //     }
+        // }
+        
+        //for in循环可以循环出数组的索引
+            var arr=['1','2','3','4','5']
+            for(var key in arr){
+                console.log(key);
+                console.log(arr[key]);
+            }
+</script>
+</html>
