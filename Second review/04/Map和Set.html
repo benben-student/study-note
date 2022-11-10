@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //Map 他是一组键值对的结构，有很快的查找速度
+
+    //例子：查找同学的成绩  名字对应的成绩
+    // var names=['Bob','miary','jack']
+    // var scores=[95,80,97]
+    //需要一一对应查找，费时费力
+
+    //Map的方法查找
+    // var m=new Map([['Bob',95],['miary',80],['jack',97],['six',92],['gree',89],['jg',98]])
+    // console.log(m.get("jack"))
+    // console.log(m.get('miary'));
+    // console.log(m.get("jg"));
+
+    //Map还有以下方法
+    // var m=new Map() //创建一个空的Array
+    // m.set("are",69) //添加新的 key-value
+    // m.set("Bob",90)
+    // m.set("as",30)
+    // m.set("qwe",59)
+    // m.set("aj",99)
+
+    // console.log(m.has("are")) //检查是否存在 key 'are'
+    // console.log(m.has("a"))
+
+    // console.log(m);
+
+    // m.delete("are")
+    // m.delete("aj")
+    // m.delete("qwe")
+
+    // console.log(m);
+
+    //Set 和Map类似，但不存储value
+    var s1=new Set()
+    var s2=new Set([1,2,3,3,"3","3"])
+    console.log(s1,s2);
+
+    //.add(key)可以添加元素到空的Set里
+    s1.add("1")
+    s1.add(2)
+    s1.add(22)
+    console.log(s1);
+
+    //.delete(key)可以删掉元素
+    s1.delete("1")
+    s1.delete(2)
+    s1.delete(22)
+    console.log(s1);
+</script>
+</html>
